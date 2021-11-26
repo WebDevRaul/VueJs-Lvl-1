@@ -6,7 +6,9 @@ const vm = Vue.createApp({
       l_name: 'Doe',
       url: 'https://google.com',
       raw_url: "<a href='https://google.com'  target='_blank'>Google</a>",
-      age: 20
+      age: 20,
+      isPurple: false,
+      selectedColor: ''
     }
   },
   methods: {
@@ -29,6 +31,16 @@ const vm = Vue.createApp({
   computed: {
     fullName() {
       return `${this.f_name} ${this.m_name} ${this.l_name}`
+    },
+    circleClasses() {
+      return { purple: this.isPurple }
+    }
+  },
+  watch: {
+    age(newV, oldV) {
+      setTimeout(() => {
+        this.age = 20
+      }, 3000)
     }
   }
 }).mount('#app')

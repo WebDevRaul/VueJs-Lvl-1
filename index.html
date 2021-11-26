@@ -18,7 +18,7 @@
       <li>
         <h5>2 way data binding</h5>
         <label for="f_name">First name</label>
-        <input name='f_name' type="text" v-model.lazy.trim='f_name'>
+        <input name='f_name' type="text" v-model='f_name'>
         <label for="m_name">Middle name [updated on pressing Enter]</label>
         <input name='m_name' type="text" @keyup.enter='updateMiddleName'>
         <label for="l_name">Last name</label>
@@ -37,6 +37,15 @@
         <label for="age">Age</label>
         <input name='age' type="number" v-model="age">
         <button type="button" @click="age--">Decrement Age</button>
+      </li>
+      <li>
+        <label><input type="checkbox" v-model='isPurple'> Purple</label>
+        <div class="circle" :class="[selectedColor, circleClasses]">hi</div>
+        <select v-model="selectedColor">
+          <option value="">White</option>
+          <option value="text-black">Black</option>
+          <option value="text-orange">Orange</option>
+        </select>
       </li>
     </ul>
   </main>
