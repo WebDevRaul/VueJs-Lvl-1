@@ -56,11 +56,28 @@
         <p v-if="mode == 1">v-if</p>
         <h3 v-else-if="mode == 2">v-else-if</h3>
         <p v-else>v-else</p>
+        <i v-show="mode == 1">v-show</i>
         <select v-model="mode">
           <option value="1">v-if</option>
           <option value="2">v-else-if</option>
           <option value="3">v-else</option>
         </select>
+      </li>
+      <li>
+        <ul>
+          <li v-for="(el, i) in letters" :key="el" :class="el">{{ el }}</li>
+        </ul>
+        <ul>
+          <li v-for="({name, age}, i) in peps" :key="el">{{ name }} is {{ age }} years old</li>
+        </ul>
+        <ul>
+          <li v-for="(pep, i) in peps" :key="pep">
+            <p v-for="(value, key, index) in pep" :key='index'>{{ value }} - {{ key }}</p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        
       </li>
     </ul>
   </main>
