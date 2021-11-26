@@ -8,7 +8,9 @@ const vm = Vue.createApp({
       raw_url: "<a href='https://google.com'  target='_blank'>Google</a>",
       age: 20,
       isPurple: false,
-      selectedColor: ''
+      selectedColor: '',
+      size: 50,
+      mode: 1
     }
   },
   methods: {
@@ -34,6 +36,9 @@ const vm = Vue.createApp({
     },
     circleClasses() {
       return { purple: this.isPurple }
+    },
+    circleSize() {
+      return { width: this.size + 'px', height: this.size + 'px' }
     }
   },
   watch: {
