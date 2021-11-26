@@ -4,13 +4,32 @@ const vm = Vue.createApp({
       message: "Hello world!"
     }
   },
-  methods: {
-
+  beforeCreate() {
+    console.log("beforeCreate() func called!", this.message)
   },
-  computed: {
-
+  created() {
+    console.log("created() func called!", this.message)
   },
-  watch: {
-
+  beforeMount() {
+    console.log("beforeMount() func called!", this.$el)
+  },
+  mounted() {
+    console.log("mounted() func called!", this.el)
+  },
+  beforeUpdate() {
+    console.log("beforeUpdate() func called!")
+  },
+  updated() {
+    console.log("updated() func called!")
+  },
+  beforeUnmount() {
+    console.log("beforeUnmount() func called!")
+  },
+  unmounted() {
+    console.log("unmounted() func called!")
   }
-}).mount('#app')
+});
+
+vm.mount('#app');
+
+// setTimeout(() => vm.mount('#app'), 3000);
