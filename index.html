@@ -9,23 +9,34 @@
 </head>
 <body>
   <main id='app' v-cloak>
-    <h1>Hello {{ `${f_name.concat(',')} ${l_name}` }}</h1>
+    <h1>Hello {{ `${f_name.concat(',')} ${m_name} ${l_name}` }}</h1>
     <ul>
       <li>
-        <h5>Method name: {{ name }}</h5>
+        <h5>Method name: {{ name() }}</h5>
+        <h5>Computed name: {{ fullName }}</h5>
       </li>
       <li>
         <h5>2 way data binding</h5>
         <label for="f_name">First name</label>
-        <input name='f_name' type="text" v-model='f_name'>
+        <input name='f_name' type="text" v-model.lazy.trim='f_name'>
+        <label for="m_name">Middle name [updated on pressing Enter]</label>
+        <input name='m_name' type="text" @keyup.enter='updateMiddleName'>
         <label for="l_name">Last name</label>
-        <input name='l_name' type="text" v-model='l_name'>
+        <input name='l_name' type="text" :value="l_name" @input="updateLName">
       </li>
       <li>
         <p>No expresion inside attr value</p>
         <a :href="url"  target='_blank'>Google</a>
         <p>HTML INJECTION</p>
         <p v-html='raw_url'></p>
+      </li>
+      <li>
+        <h5>Age: {{ age }}</h5>
+        <button type="button" v-on:click="increment">Increment Age</button>
+        <button type="button" @click="add(2)">Increment Age w/ 2</button>
+        <label for="age">Age</label>
+        <input name='age' type="number" v-model="age">
+        <button type="button" @click="age--">Decrement Age</button>
       </li>
     </ul>
   </main>
