@@ -21,6 +21,12 @@
         <label for="l_name">Last name</label>
         <input name='l_name' type="text" v-model='l_name'>
       </li>
+      <li>
+        <p>No expresion inside attr value</p>
+        <a :href="url"  target='_blank'>Google</a>
+        <p>HTML INJECTION</p>
+        <p v-html='raw_url'></p>
+      </li>
     </ul>
   </main>
   <script src="https://unpkg.com/vue@next"></script>
