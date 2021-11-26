@@ -8,8 +8,20 @@
   <title>Vuejs</title>
 </head>
 <body>
-  <main id='app'>
+  <main id='app' v-cloak>
     <h1>Hello {{ `${f_name.concat(',')} ${l_name}` }}</h1>
+    <ul>
+      <li>
+        <h5>Method name: {{ name }}</h5>
+      </li>
+      <li>
+        <h5>2 way data binding</h5>
+        <label for="f_name">First name</label>
+        <input name='f_name' type="text" v-model='f_name'>
+        <label for="l_name">Last name</label>
+        <input name='l_name' type="text" v-model='l_name'>
+      </li>
+    </ul>
   </main>
   <script src="https://unpkg.com/vue@next"></script>
   <script src="app.js"></script>

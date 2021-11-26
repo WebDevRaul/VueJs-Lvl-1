@@ -4,6 +4,11 @@ const vm = Vue.createApp({
       f_name: 'John',
       l_name: 'Doe'
     }
+  },
+  methods: {
+    name() {
+      return `${f_name} ${l_name}`
+    }
   }
 }).mount('#app')
 
