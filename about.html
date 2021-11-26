@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="main.css">
+  <title>Vuejs</title>
+</head>
+<body>
+  <main id='app' v-cloak>
+    <h1>Hello {{ `${f_name.concat(',')} ${m_name} ${l_name}` }}</h1>
+    <ul>
+      <li>
+        <h5>Method name: {{ name() }}</h5>
+        <h5>Computed name: {{ fullName }}</h5>
+      </li>
+      <li>
+        <h5>2 way data binding</h5>
+        <label for="f_name">First name</label>
+        <input name='f_name' type="text" v-model='f_name'>
+        <label for="m_name">Middle name [updated on pressing Enter]</label>
+        <input name='m_name' type="text" @keyup.enter='updateMiddleName'>
+        <label for="l_name">Last name</label>
+        <input name='l_name' type="text" :value="l_name" @input="updateLName">
+      </li>
+      <li>
+        <p>No expresion inside attr value</p>
+        <a :href="url"  target='_blank'>Google</a>
+        <p>HTML INJECTION</p>
+        <p v-html='raw_url'></p>
+      </li>
+      <li>
+        <h5>Age: {{ age }}</h5>
+        <button type="button" v-on:click="increment">Increment Age</button>
+        <button type="button" @click="add(2)">Increment Age w/ 2</button>
+        <label for="age">Age</label>
+        <input name='age' type="number" v-model="age">
+        <button type="button" @click="age--">Decrement Age</button>
+      </li>
+      <li>
+        <label><input type="checkbox" v-model='isPurple'> Purple</label>
+        <div class="circle" 
+          :class="[selectedColor, circleClasses]"
+          :style="circleSize"
+        >hi</div>
+        <select v-model="selectedColor">
+          <option value="">White</option>
+          <option value="text-black">Black</option>
+          <option value="text-orange">Orange</option>
+        </select>
+        <input type="number" v-model="size">
+      </li>
+      <li>
+        <h5>Conditional rendering</h5>
+        <p v-if="mode == 1">v-if</p>
+        <h3 v-else-if="mode == 2">v-else-if</h3>
+        <p v-else>v-else</p>
+        <i v-show="mode == 1">v-show</i>
+        <select v-model="mode">
+          <option value="1">v-if</option>
+          <option value="2">v-else-if</option>
+          <option value="3">v-else</option>
+        </select>
+      </li>
+      <li>
+        <ul>
+          <li v-for="(el, i) in letters" :key="i" :class="el">{{ el }}</li>
+        </ul>
+        <ul>
+          <li v-for="({name, age}, i) in peps" :key="i">{{ name }} is {{ age }} years old</li>
+        </ul>
+        <ul>
+          <li v-for="(pep, i) in peps" :key="pep">
+            <p v-for="(value, key, index) in pep" :key='index'>{{ value }} - {{ key }}</p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </main>
+  <script src="https://unpkg.com/vue@next"></script>
+  <script src="about.js"></script>
+</body>
+</html>
