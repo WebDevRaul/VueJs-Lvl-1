@@ -19,6 +19,7 @@ module.exports = {
         use: [
           MiniCssExtractPlugin.loader, // or 'style-loader' for plain style css in head html file
           'css-loader',
+          'postcss-loader',
           'sass-loader'
         ]
       }
